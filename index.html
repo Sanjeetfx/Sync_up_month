@@ -1,0 +1,693 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>SYNC UP AGENDA FOR MONTH</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 3px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.column-list {
+	display: flex;
+	justify-content: space-between;
+}
+
+.column {
+	padding: 0 1em;
+}
+
+.column:first-child {
+	padding-left: 0;
+}
+
+.column:last-child {
+	padding-right: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	padding-inline-start: 0;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.page-description {
+    margin-bottom: 2em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-block;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1.25em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(55, 53, 47, 1);
+}
+.highlight-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.highlight-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.highlight-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.highlight-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.highlight-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.highlight-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.highlight-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.highlight-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.highlight-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.highlight-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.highlight-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.highlight-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.highlight-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.highlight-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.highlight-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.block-color-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.block-color-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.block-color-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.block-color-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.block-color-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.block-color-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.block-color-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.block-color-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.block-color-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.block-color-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.block-color-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.block-color-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.select-value-color-interactiveBlue { background-color: rgba(35, 131, 226, .07); }
+.select-value-color-pink { background-color: rgba(245, 224, 233, 1); }
+.select-value-color-purple { background-color: rgba(232, 222, 238, 1); }
+.select-value-color-green { background-color: rgba(219, 237, 219, 1); }
+.select-value-color-gray { background-color: rgba(227, 226, 224, 1); }
+.select-value-color-translucentGray { background-color: rgba(255, 255, 255, 0.0375); }
+.select-value-color-orange { background-color: rgba(250, 222, 201, 1); }
+.select-value-color-brown { background-color: rgba(238, 224, 218, 1); }
+.select-value-color-red { background-color: rgba(255, 226, 221, 1); }
+.select-value-color-yellow { background-color: rgba(253, 236, 200, 1); }
+.select-value-color-blue { background-color: rgba(211, 229, 239, 1); }
+.select-value-color-pageGlass { background-color: undefined; }
+.select-value-color-washGlass { background-color: undefined; }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="eb192c4e-91a7-4be3-8c7f-cbc998cf7af4" class="page sans"><header><img class="page-cover-image" src="SYNC%20UP%20AGENDA%20FOR%20MONTH%20eb192c4e91a74be38c7fcbc998cf7af4/AD_(1).gif" style="object-position:center 48.419999999999995%"/><h1 class="page-title">SYNC UP AGENDA FOR MONTH</h1><p class="page-description"></p><table class="properties"><tbody><tr class="property-row property-row-created_time"><th><span class="icon property-icon"><svg role="graphics-symbol" viewBox="0 0 16 16" style="width:14px;height:14px;display:block;fill:rgba(55, 53, 47, 0.45);flex-shrink:0" class="typesCreatedAt"><path d="M8 15.126C11.8623 15.126 15.0615 11.9336 15.0615 8.06445C15.0615 4.20215 11.8623 1.00293 7.99316 1.00293C4.13086 1.00293 0.938477 4.20215 0.938477 8.06445C0.938477 11.9336 4.1377 15.126 8 15.126ZM8 13.7383C4.85547 13.7383 2.33301 11.209 2.33301 8.06445C2.33301 4.91992 4.84863 2.39746 7.99316 2.39746C11.1377 2.39746 13.6738 4.91992 13.6738 8.06445C13.6738 11.209 11.1445 13.7383 8 13.7383ZM4.54102 8.91211H7.99316C8.30078 8.91211 8.54004 8.67285 8.54004 8.37207V3.8877C8.54004 3.58691 8.30078 3.34766 7.99316 3.34766C7.69238 3.34766 7.45312 3.58691 7.45312 3.8877V7.83203H4.54102C4.2334 7.83203 4.00098 8.06445 4.00098 8.37207C4.00098 8.67285 4.2334 8.91211 4.54102 8.91211Z"></path></svg></span>09/22/2023</th><td><time>@September 20, 2023 12:58 PM</time></td></tr><tr class="property-row property-row-status"><th><span class="icon property-icon"><img src="https://www.notion.so/icons/calendar_gray.svg" style="width:14px;height:14px"/></span>29 September 2023, १२ असोज २०८०</th><td><span class="status-value select-value-color-yellow"><div class="status-dot status-dot-color-yellow"></div>Target this month</span></td></tr><tr class="property-row property-row-text"><th><span class="icon property-icon"><svg role="graphics-symbol" viewBox="0 0 16 16" style="width:14px;height:14px;display:block;fill:rgba(55, 53, 47, 0.45);flex-shrink:0" class="typesText"><path d="M1.56738 3.25879H14.4258C14.7676 3.25879 15.0479 2.97852 15.0479 2.63672C15.0479 2.29492 14.7744 2.02148 14.4258 2.02148H1.56738C1.21875 2.02148 0.952148 2.29492 0.952148 2.63672C0.952148 2.97852 1.22559 3.25879 1.56738 3.25879ZM1.56738 6.84082H14.4258C14.7676 6.84082 15.0479 6.56055 15.0479 6.21875C15.0479 5.87695 14.7744 5.60352 14.4258 5.60352H1.56738C1.21875 5.60352 0.952148 5.87695 0.952148 6.21875C0.952148 6.56055 1.22559 6.84082 1.56738 6.84082ZM1.56738 10.4229H14.4258C14.7676 10.4229 15.0479 10.1426 15.0479 9.80078C15.0479 9.45898 14.7744 9.18555 14.4258 9.18555H1.56738C1.21875 9.18555 0.952148 9.45898 0.952148 9.80078C0.952148 10.1426 1.22559 10.4229 1.56738 10.4229ZM1.56738 14.0049H8.75879C9.10059 14.0049 9.38086 13.7246 9.38086 13.3828C9.38086 13.041 9.10742 12.7676 8.75879 12.7676H1.56738C1.21875 12.7676 0.952148 13.041 0.952148 13.3828C0.952148 13.7246 1.22559 14.0049 1.56738 14.0049Z"></path></svg></span>Key points</th><td><strong>Sync up Agenda: Target this month</strong>
+• PC/Laptop/Accessories Resource Management
+• Duties and Responsibilities
+• Ongoing Project and Completed Project
+• Storage Management</td></tr></tbody></table></header><div class="page-body"><h1 id="de0f7e5c-07a9-4c7e-b163-be24b51ff586" class=""><strong>PC/Laptop/Accessories Resource Management</strong></h1><ul id="88f41885-55ec-4e73-96aa-e40228759a55" class="toggle"><li><details open=""><summary><mark class="highlight-orange"><em><strong>Credential</strong></em></mark></summary><p id="93e523f7-f0b4-4be7-86d5-cfa3bdd32378" class=""><code>Username: Morning/Evening</code></p><p id="071d215f-ba79-4f45-9779-391301c64443" class=""><code>Password: ing123</code></p></details></li></ul><ul id="48c7460b-087b-4e59-a7e4-e71205938508" class="toggle"><li><details open=""><summary><mark class="highlight-blue"><em><strong>Update Tag List</strong></em></mark></summary><p id="e0aee34c-bfa0-4f04-b22b-cd6147d3ee10" class=""><mark class="highlight-orange"><code><a href="https://docs.google.com/spreadsheets/d/1IOZbVQeL6H_PXCNOnhfz0_Z-kMjVTJJP43G955BxmeU/edit#gid=1807668734">Phase 2 PC Tagging list</a></code></mark></p><p id="2b80da0f-db86-4d60-ae40-752f0fba1100" class="">Data allocation for assigned PC/Laptop with users.</p><figure id="fbfbf854-9807-4d6e-a80b-043f99a86e6e" class="image" style="text-align:left"><a href="SYNC%20UP%20AGENDA%20FOR%20MONTH%20eb192c4e91a74be38c7fcbc998cf7af4/Untitled.png"><img style="width:672px" src="SYNC%20UP%20AGENDA%20FOR%20MONTH%20eb192c4e91a74be38c7fcbc998cf7af4/Untitled.png"/></a></figure></details></li></ul><ul id="8d65ff57-2adb-42d5-9039-80be7ba1d051" class="toggle"><li><details open=""><summary><mark class="highlight-pink"><em><strong>Upload PC with Premium account</strong></em></mark></summary><p id="3734014e-561e-43fb-8717-a38bd3e6e866" class=""><code><mark class="highlight-pink"><strong>L1</strong></mark></code><code><mark class="highlight-pink"> (</mark></code><code><mark class="highlight-pink"><a href="http://frame.io/">Frame.io</a></mark></code><code><mark class="highlight-pink">, Freepik, Slack &gt; Animation lead) and </mark></code><code><mark class="highlight-pink"><strong>L2</strong></mark></code><code><mark class="highlight-pink"> (All the others and Shutterstock only)</mark></code></p><div id="977b1583-9cb1-4251-96d8-1eb5a85fbea0" class="column-list"><div id="50fc400d-3e5b-4f1b-978e-b6ef5d704f2f" style="width:50%" class="column"><figure id="16a5cd5c-0211-4e3f-afaf-57f3de49f4e0" class="image" style="text-align:left"><a href="SYNC%20UP%20AGENDA%20FOR%20MONTH%20eb192c4e91a74be38c7fcbc998cf7af4/image_(6).png"><img style="width:288px" src="SYNC%20UP%20AGENDA%20FOR%20MONTH%20eb192c4e91a74be38c7fcbc998cf7af4/image_(6).png"/></a></figure></div><div id="6062ba8e-f2b2-41ae-8421-02c1b39c8339" style="width:50%" class="column"><figure id="aa2549b8-3828-46ad-ae25-02773dbaef98" class="image" style="text-align:left"><a href="SYNC%20UP%20AGENDA%20FOR%20MONTH%20eb192c4e91a74be38c7fcbc998cf7af4/image.png"><img style="width:1366px" src="SYNC%20UP%20AGENDA%20FOR%20MONTH%20eb192c4e91a74be38c7fcbc998cf7af4/image.png"/></a></figure></div></div></details></li></ul><h1 id="4fc759e7-65fa-4a8b-b09e-c81ff888d52e" class="">Duties and Responsibilities<strong> </strong></h1><ul id="426b09c0-57e2-467b-9ab1-44a39a7952c6" class="toggle"><li><details open=""><summary><mark class="highlight-purple"><strong>Teams division after the switch</strong></mark></summary><p id="c6858e67-6a35-4d2a-ba42-710dcb9e2d36" class=""><mark class="highlight-brown"><a href="https://docs.google.com/spreadsheets/d/1vtqvEv7JCog4SlQdLduT0gqU80StmMH_m_LMWn_SmvY/edit#gid=1731818829">Team Members</a></mark></p><figure id="d8d33dff-b818-4199-847e-66c8d0591b5f" class="image"><a href="SYNC%20UP%20AGENDA%20FOR%20MONTH%20eb192c4e91a74be38c7fcbc998cf7af4/Untitled%201.png"><img style="width:967px" src="SYNC%20UP%20AGENDA%20FOR%20MONTH%20eb192c4e91a74be38c7fcbc998cf7af4/Untitled%201.png"/></a></figure></details></li></ul><ul id="a9dee24c-00e1-444c-920a-dce197781619" class="toggle"><li><details open=""><summary><mark class="highlight-pink"><strong>GTP (Go- To- Person) and Leaders</strong></mark></summary><ul id="cb9e8ada-5961-40d1-821d-6910921441da" class="toggle"><li><details open=""><summary><strong>GTP (Mostly focus on daily routines)</strong></summary><ul id="2b0fe822-cf06-431c-8e7f-fd425d2184b5" class="bulleted-list"><li style="list-style-type:disc"><strong>Daily standups: </strong>All management discussions, whether official or unofficial, including those that take place in meetings, Slack, etc., should be communicated and informed in the most clear and understandable way possible to animators.</li></ul><ul id="4bfac378-e763-43ef-9ce0-f47c8b72aaab" class="bulleted-list"><li style="list-style-type:disc"><strong>Attendance and Punctuality</strong>: Check in and out time, adhere to their work schedules, and notify their supervisors in advance if they need time off.  Leave management with incentive holidays for Sundays.</li></ul><p id="9a9e5b07-6398-4efc-be42-6a051109255c" class="">       <strong>8 hours (48 hours a week) </strong>so that there will be no penalty by the HR team.</p><div id="41c55228-57e2-49dc-aeaa-5dc3df0d2705" class="column-list"><div id="7f8d12b4-6193-462b-bc73-96d9583ed0db" style="width:100%" class="column"><ul id="c92ca733-31b3-4298-9855-28b952a53d31" class="bulleted-list"><li style="list-style-type:disc"><strong>Morning Shift (6 am - 2 pm) </strong></li></ul><p id="98f37d7c-84bc-4d8e-9944-b66c6161b217" class="">       <em>Break time 9am - 10am</em></p></div><div id="5208492c-83f7-491b-a790-de50b10b55ab" style="width:100%" class="column"><ul id="6026106d-f226-49c1-91ff-f460480e7705" class="bulleted-list"><li style="list-style-type:disc"><strong>Night Shift (2 pm - 10 pm) </strong></li></ul><p id="fbb0bee2-7c16-489e-aaf2-b01564f75e99" class="">       <em>Break time 7 pm - 8 pm</em></p><p id="39b874e2-0a05-4837-a855-00b514c55489" class="">
+</p></div></div><ul id="b3a2e804-57cd-4b7c-9ebb-b4d1d5eaf154" class="bulleted-list"><li style="list-style-type:disc"><strong>Productivity</strong>: Check daily assigned tasks and work efficiency, and make sure to complete their tasks within a reasonable timeframe. This involves managing time for teammates to evaluate prioritized tasks and submission time.</li></ul><ul id="a2028305-ab17-4adf-9a17-e9205ca0fc0e" class="bulleted-list"><li style="list-style-type:disc"><strong>Communication: </strong>Communicate with subject leaders and animators. If it involves sharing project-related information, it can be done with content experts or animation subject leads.</li></ul><ul id="e71fb9f1-b67c-4092-ba4b-393493298ed2" class="bulleted-list"><li style="list-style-type:disc"><strong>Reporting</strong>: Overview daily and submission of the project.</li></ul><p id="fe7aac1a-ebb1-4f81-90d2-2308ab9db8c8" class="">
+</p></details></li></ul><ul id="be0096bb-1703-403e-8829-b83ee291e5ad" class="toggle"><li><details open=""><summary><strong>Leaders (Mostly focus on subject demand)</strong></summary><ul id="6e777491-5166-4f1f-96f5-c9e737d1af57" class="bulleted-list"><li style="list-style-type:disc"><strong>Work Quality</strong>: Maintaining high standards of quality in their work is essential. This includes accuracy, attention to detail, and meeting performance expectations.</li></ul><ul id="f1ff4a13-c914-4b9b-9395-5891f9ec170b" class="bulleted-list"><li style="list-style-type:disc"><strong>Teamwork</strong>: Collaborating effectively which includes sharing Guidelines, offering help, and being a team player with GTP/animators.</li></ul><ul id="a16babcf-85d4-4ffc-ab92-7139508f36a8" class="bulleted-list"><li style="list-style-type:disc"><strong>Performance Reviews</strong>: Participating in performance evaluations and setting goals for professional development. </li></ul><ul id="8d94ee48-19c1-49d9-8274-aa46723b9bfa" class="bulleted-list"><li style="list-style-type:disc"><strong>Project meeting</strong>: Make sure there are no conflict of interest with frequent changes, policies or guidelines.</li></ul><ul id="ca6f6b23-347f-44ed-9187-a98218228d10" class="bulleted-list"><li style="list-style-type:disc"><strong>Problem-Solving</strong>: Solve problems between other departments regarding files of animators.</li></ul><p id="af77112c-98fa-4b38-a68a-2d08f9e6b453" class=""><strong>For example:-</strong></p><figure id="f659275e-f20b-4c40-b2d4-bd5a9a887070" class="image"><a href="SYNC%20UP%20AGENDA%20FOR%20MONTH%20eb192c4e91a74be38c7fcbc998cf7af4/Untitled%202.png"><img style="width:1251px" src="SYNC%20UP%20AGENDA%20FOR%20MONTH%20eb192c4e91a74be38c7fcbc998cf7af4/Untitled%202.png"/></a></figure></details></li></ul></details></li></ul><div id="4dabc9b7-431c-4bc8-bce8-304c0ec535af" class="column-list"><div id="95fe23ad-733d-4323-8312-891000f93709" style="width:50%" class="column"><h1 id="075df2e7-38cc-4a79-a30f-22c3fe5bbe07" class="">On Going Project</h1></div><div id="104eacce-e609-44f2-94bd-d4b58b2fcbf8" style="width:50.000000000000014%" class="column"><p id="d31341fe-1ceb-4a55-b4f1-47a051b0fcc4" class="">
+</p></div></div><ul id="ee864d94-7261-424f-a0e8-ae2f9c5bb726" class="toggle"><li><details open=""><summary><mark class="highlight-teal"><strong>NC 11 &amp; 12 (This Month)</strong></mark></summary><ul id="ee35402d-a6c1-4e20-b6a4-28a2e6385185" class="bulleted-list"><li style="list-style-type:disc"><mark class="highlight-purple">Math 12, Nepali 12, Economics 12 (in Progress)</mark></li></ul><ul id="d81b07cb-3e3d-404e-af04-632e70da88d0" class="bulleted-list"><li style="list-style-type:disc"><mark class="highlight-pink">Science/Non-Science Error List</mark></li></ul><ul id="fbb009d2-eda2-4b5f-83c3-cedc3577859e" class="bulleted-list"><li style="list-style-type:disc"><mark class="highlight-pink">Science Practical 11 &amp; 12 (Physics, Chemistry, Biology)</mark></li></ul><ul id="709f9253-9774-4172-9a17-61cd8d329060" class="bulleted-list"><li style="list-style-type:disc">Social 11 Rework &amp; 12 Beta</li></ul><ul id="1ecf9ee8-d689-459e-a94b-27d8e451b165" class="bulleted-list"><li style="list-style-type:disc">English 11 Error &amp; 12 Rework</li></ul><ul id="1f0aef30-4ad7-475b-9d4c-64acec3e5ef6" class="bulleted-list"><li style="list-style-type:disc">Slides for a prepared script subject Grade 10 (Math, Social, English)</li></ul><ul id="63a49d1d-df8f-4101-b1c8-f665265f5484" class="bulleted-list"><li style="list-style-type:disc">Nepali 11 Storyline from Innovation Squad</li></ul><ul id="f6c6ac50-ba4c-4c7a-ade7-ce81584dea64" class="toggle"><li><details open=""><summary><mark class="highlight-pink">Reupload Mastered completed </mark></summary><ul id="6f1810cf-6c72-4bfb-9d25-6e900b2ecf96" class="bulleted-list"><li style="list-style-type:disc"><code>English_11 Mastering on progress</code></li></ul><ul id="03619b40-99c8-4f6e-8941-d50392e8104d" class="bulleted-list"><li style="list-style-type:disc"><code>Social 11 checking on the progress</code></li></ul><ul id="e59057a5-5219-47a2-9b65-7d2c4b5c13c7" class="bulleted-list"><li style="list-style-type:disc"><code>Account_11 checking on the progress</code></li></ul><ul id="017426af-0582-4bc7-bc21-b402b17e1385" class="bulleted-list"><li style="list-style-type:disc"><code>Business 11 checking on the progress</code></li></ul><p id="6a764476-e7c6-46d4-9d07-8dc4bfa74ed8" class="">
+</p></details></li></ul><p id="7dc9ffd9-4432-4f01-9dbc-e921c44c0837" class="">
+</p></details></li></ul><ul id="7191ffcd-fa72-4710-864c-d44b77091f7b" class="toggle"><li><details open=""><summary><mark class="highlight-teal"><strong>IGCSE &amp; AS/A Level</strong></mark></summary><ul id="7b21ee35-24b8-4f1a-bd4c-bed4b9478554" class="bulleted-list"><li style="list-style-type:disc">IGCSE Additional Mathematics</li></ul><ul id="923f45d4-f728-4dc4-97a6-543b41d93dee" class="bulleted-list"><li style="list-style-type:disc"><mark class="highlight-red"><strong>AS\A LEVELS CHEMISTRY WIP</strong></mark></li></ul></details></li></ul><p id="bad220ec-32b4-4640-a419-e46b0346e514" class="">
+</p><h1 id="9973c35b-2b83-42c8-9df8-9f18094d7e8d" class="">Completed Project</h1><p id="3c3c5b3a-71b8-4b55-b8de-a468271033bc" class="">
+</p><ul id="6aa461a0-9191-4249-8d41-a44414315298" class="toggle"><li><details open=""><summary><mark class="highlight-teal"><strong>NC 11 &amp; 12</strong></mark></summary><ul id="5d91dd8e-f96e-4834-b66a-cd580191b5a6" class="bulleted-list"><li style="list-style-type:disc"><mark class="highlight-pink">Science 11 &amp; 12 (Physics, Chemistry, Biology)  Rework completed</mark></li></ul><ul id="28c8d7da-06fd-45bf-87bc-180c6e8917ef" class="bulleted-list"><li style="list-style-type:disc"><mark class="highlight-pink">Non Science (Accounts 11 &amp;12 , Math 11, Economics 11, Nepali 11, English 11) Rework completed</mark></li></ul><ul id="baa7542a-81ec-4d50-831f-a58488db9d47" class="bulleted-list"><li style="list-style-type:disc"><mark class="highlight-pink">Beta (Computer Science 11, Business 11)</mark></li></ul><p id="1a172b85-32e3-455b-8f53-37e6be3de521" class="">
+</p></details></li></ul><ul id="66cd06b6-166d-4b1a-bd76-fc43dc5fde69" class="toggle"><li><details open=""><summary><mark class="highlight-teal"><strong>IGCSE &amp; AS/A Level</strong></mark></summary><ul id="154149d2-a7e5-407b-af56-8d721039c663" class="bulleted-list"><li style="list-style-type:disc"><mark class="highlight-red"><strong>WOE IGCSE ADDITIONAL MATHEMATICS </strong></mark></li></ul><ul id="9e3bad8d-3b4f-4711-aaa3-405249b251cb" class="bulleted-list"><li style="list-style-type:disc"><mark class="highlight-red"><strong>WOE AS\A LEVELS MATHS </strong></mark></li></ul><ul id="6ea97459-1805-4481-aaea-22fdf11b1a54" class="bulleted-list"><li style="list-style-type:disc"><mark class="highlight-red"><strong>WOE IGCSE &amp; A LEVELS_PHYSICS</strong></mark></li></ul><ul id="fc9f75d3-9947-4805-8b7e-ed4ab007d008" class="bulleted-list"><li style="list-style-type:disc"><mark class="highlight-red"><strong>WOE IGCSE &amp; A LEVELS_BIOLOGY</strong></mark></li></ul><ul id="a39abe74-d8e2-4064-a3fd-961432ac84a5" class="bulleted-list"><li style="list-style-type:disc"><mark class="highlight-red"><strong>TT_SS ADDITIONAL MATHEMATICS</strong></mark></li></ul><ul id="46deae4f-b7dc-4ef1-93ed-ed1c670804a6" class="bulleted-list"><li style="list-style-type:disc"><mark class="highlight-red"><strong>UPGRADE OF A LEVELS (MATHS, CHEMISTRY, BIOLOGY)</strong></mark></li></ul><ul id="0a57d636-469b-4803-98d5-a2b3fcc1d4ce" class="bulleted-list"><li style="list-style-type:disc"><mark class="highlight-red"><strong>UPGRADE OF WOE PHYSICS 2018</strong></mark></li></ul></details></li></ul><h1 id="45d23fa4-140a-4c3c-9705-cfb8537cac27" class=""><strong>Storage management </strong></h1><ul id="712f214e-7e20-42b3-a5c3-920a254030a4" class="toggle"><li><details open=""><summary><mark class="highlight-blue"><strong>Backup and Cleanup</strong></mark></summary><ul id="a51bd625-6bfa-43a1-80d3-f99f0918ff7f" class="bulleted-list"><li style="list-style-type:disc"><code><strong>Backup for Batch 5 NC 11 &amp; 12</strong></code></li></ul><ul id="f68e26a6-fa60-4944-9e34-e0fdea851cbf" class="bulleted-list"><li style="list-style-type:disc"><code><strong>Clear NAS 4 and move files to NAS 5</strong></code></li></ul><ul id="1e59293e-e4d2-47c3-ac53-a8698831f21e" class="bulleted-list"><li style="list-style-type:disc"><code><strong>Perform asset management for respective subject in SAN</strong></code></li></ul><ul id="d58177fc-3bae-4278-94c1-5752f743c37f" class="bulleted-list"><li style="list-style-type:disc"><strong><code>Frame.io</code></strong></li></ul><figure id="9d748eeb-618c-433f-b26f-1e82168dbe68" class="image" style="text-align:left"><a href="SYNC%20UP%20AGENDA%20FOR%20MONTH%20eb192c4e91a74be38c7fcbc998cf7af4/Untitled%203.png"><img style="width:376px" src="SYNC%20UP%20AGENDA%20FOR%20MONTH%20eb192c4e91a74be38c7fcbc998cf7af4/Untitled%203.png"/></a></figure><p id="d68bc80e-06bb-40bc-b619-228ba54bc4dd" class="">
+</p><p id="2740bb0a-0eeb-4ebb-b690-9575dfce98ff" class="">
+</p><p id="fcfa18e8-ad5c-463a-946d-c4db29cd862d" class="">
+</p></details></li></ul><h1 id="ff42bf32-8a2e-4e9a-a1a5-78fba927aa7a" class="">Extra</h1><ul id="30918e15-3701-424c-9bfa-59dcaab2436a" class="toggle"><li><details open=""><summary><strong>Activities</strong></summary><figure id="0fb13025-d6af-461b-ba7b-d2f7f2181d1a" class="image"><a href="SYNC%20UP%20AGENDA%20FOR%20MONTH%20eb192c4e91a74be38c7fcbc998cf7af4/Untitled%204.png"><img style="width:212px" src="SYNC%20UP%20AGENDA%20FOR%20MONTH%20eb192c4e91a74be38c7fcbc998cf7af4/Untitled%204.png"/></a></figure><p id="eff7e968-5274-4be9-a707-6f46d415f21d" class="">One day trip &gt; 1k &gt; Eat out, Visit a place, Picnic, etc.</p><p id="4c49f443-64d6-463c-9f8d-964b8aa34e8e" class="">Two day trip &gt; 4-5k &gt; Dinner, Breakfast, Riverside resort, excursion etc.</p><p id="c3c9537c-de70-4cca-9fa8-001ccd77fdef" class="">
+</p></details></li></ul><p id="78c02957-f98f-4dfb-997f-2157a1b3f5e6" class="">
+</p></div></article></body></html>
